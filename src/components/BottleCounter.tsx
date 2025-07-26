@@ -13,6 +13,7 @@ const BottleCounter: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [depositValue, setDepositValue] = useState<number>(0);
   const [isCameraReady, setIsCameraReady] = useState(false);
+  const [cameraError, setCameraError] = useState<string | null>(null);
 
   // Deposit values (in cents)
   const BOTTLE_DEPOSIT = 5;
@@ -35,6 +36,8 @@ const BottleCounter: React.FC = () => {
     setBottleCount(0);
     setCanCount(0);
     setDepositValue(0);
+    setCameraError(null);
+    setIsCameraReady(false);
   }, []);
 
   const analyzeImage = useCallback(async (imageSrc: string) => {
@@ -147,7 +150,15 @@ const BottleCounter: React.FC = () => {
                 height: 720,
                 facingMode: { ideal: "environment" }
               }}
-              onUserMedia={() => setIsCameraReady(true)}
+              onUserMedia={() => {
+                setIsCameraReady(true);
+                setCameraError(null);
+              }}
+              onUserMediaError={(error) => {
+                console.error('Camera error:', error);
+                setCameraError('Camera access denied or not available');
+                setIsCameraReady(false);
+              }}
               className="webcam"
             />
             {isCameraReady && (
@@ -155,6 +166,17 @@ const BottleCounter: React.FC = () => {
                 <div className="target-area">
                   <p>Position bottles and cans within this area</p>
                 </div>
+              </div>
+            )}
+            {cameraError && (
+              <div className="camera-error">
+                <p>{cameraError}</p>
+                <button className="btn btn-secondary" onClick={() => {
+                  setCameraError(null);
+                  setIsCapturing(false);
+                }}>
+                  Try Again
+                </button>
               </div>
             )}
           </div>
