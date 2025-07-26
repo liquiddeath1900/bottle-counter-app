@@ -1,0 +1,367 @@
+.bottle-counter {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.camera-container {
+  position: relative;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.camera-view {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 300px;
+}
+
+.webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.target-area {
+  border: 3px dashed rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.target-area p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.captured-image {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 300px;
+}
+
+.captured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.processing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.controls {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.capture-controls,
+.result-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 150px;
+}
+
+.btn-large {
+  padding: 1.5rem 3rem;
+  font-size: 1.3rem;
+  min-width: 200px;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #2196F3, #1976D2);
+  color: white;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.results {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.results h2 {
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.8rem;
+}
+
+.count-display {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.count-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.count-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #4CAF50;
+}
+
+.count-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.deposit-value {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.deposit-value h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.value-display {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.value-breakdown {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .bottle-counter {
+    padding: 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .camera-view,
+  .captured-image {
+    height: 50vh;
+    min-height: 250px;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    min-width: 120px;
+  }
+
+  .btn-large {
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    min-width: 160px;
+  }
+
+  .count-display {
+    flex-wrap: wrap;
+  }
+
+  .count-number {
+    font-size: 2.5rem;
+  }
+
+  .value-display {
+    font-size: 2.5rem;
+  }
+
+  .capture-controls,
+  .result-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .target-area {
+    padding: 1.5rem;
+  }
+
+  .target-area p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottle-counter {
+    padding: 0.25rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .camera-view,
+  .captured-image {
+    height: 45vh;
+    min-height: 200px;
+  }
+
+  .results {
+    padding: 1.5rem;
+  }
+
+  .count-item {
+    padding: 1rem;
+  }
+
+  .count-number {
+    font-size: 2rem;
+  }
+
+  .value-display {
+    font-size: 2rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .bottle-counter {
+    background: #000;
+    color: #fff;
+  }
+  
+  .camera-container,
+  .results,
+  .count-item {
+    background: #333;
+    border: 2px solid #fff;
+  }
+}
